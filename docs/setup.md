@@ -46,6 +46,12 @@ Click the "Add SSH key" button to save your new key.
 
 Next, go to the [course repository](https://github.com/kyclark/be434-fall-2021) and click the "Fork" button so as to make a copy of the code into your account. 
 Add my GitHub username "kyclark" as a Collaborator on your repo so that I can push and pull code, and then email me your GitHub ID and the URL for your repo. 
+
+* Go to the "Settings" for your repo
+* Choose "Manage Access" from the left panel
+* Click the green "Invite a collaborator" button
+* Add "kyclark" and send
+
 All your assignments will be pushed to GitHub where I will pull the code to my machine for checking. 
 At the end of the semester, you will have a public repository of code you can share to show proficiency in Python coding and testing.
 
@@ -203,12 +209,9 @@ On Ubuntu, you can do this:
 sudo apt install build-essential
 ```
 
-If everything goes well, the last line should be this:
+NOTE: The `sudo` command is a combination of _su_ (super-user) and _do_, so you are executing a command as the _root_ or administrator of the machine. It will likely require you to type your password. Cf. https://xkcd.com/149/.
 
-```
-creating Makefile
-```
-
+If everything goes well, the last line should say _creating Makefile_.
 That means you have a _Makefile_, which means you can run `make` to build Python.
 This step may take a while:
 
@@ -217,6 +220,7 @@ make
 ```
 
 If that succeeds, you should be able to run **`make install`** to copy the new Python binary to location like `/usr/local/bin`.
+If permissions prevent you from writing to system directories, then do **`sudo make install`** to run as root.
 
 ## Author
 
