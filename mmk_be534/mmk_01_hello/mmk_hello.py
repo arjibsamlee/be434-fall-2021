@@ -1,8 +1,7 @@
 #! /usr/bin/env pthon3
-    """ 
-    Author: Megan Kane
-    Class:  BE 534
-    Purpose:Say Hello
-    """
+
+#   Author:     Megan Kane
+#   Class:      BE 534
+#   Purpose:    Say Hello
 
 print ("Hello World!") # say hello to the world
