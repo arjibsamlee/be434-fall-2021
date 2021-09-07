@@ -31,19 +31,20 @@ def test_executable():
 
 #-------------------------
 def test_usage():
-    # the usage of the program
-    for flag in ['-h', '--help']:
-        rv, out = getstatusoutput(f'{prg}{flag}')
-        assert rv == 0
-        assert out.lower().startswith('ussage')
+    """ Prints usage """
 
+    for flag in ['-h', '--help']:
+        rv, out = getstatusoutput(f'{prg} {flag}')
+        assert rv == 0
+        assert out.lower().startswith('usage')
 #-------------------------------
 
 def test_input():
-    #test for input
+    """test for input"""
+
     for val in ['Universe', 'Multiverse']:
         for option in ['-n', '--name']:
-            rv, out = getstatusupdate(f'{prg} {option} {val}')
+            rv, out = getstatusoutput(f'{prg} {option} {val}')
             assert rv == 0
             assert out.strip() == f'Hello, {val}!'
 
