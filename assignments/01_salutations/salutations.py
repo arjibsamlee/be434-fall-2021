@@ -14,14 +14,20 @@ import argparse
 def get_args():
     # pull the command line arguments
 
-    parser = argparse.ArgumentParser(description='Greetings and salutations')
+    parser = argparse.ArgumentParser(
+        description='Greetings and salutations')
 
-    parser.add_argument('-g', '--greeting', metavar='greeting',
-                        default='Howdy', help='the greeting used')
-    parser.add_argument('-n', '--name', metavar='name',
-                        default='Stranger', help='Name to greet')
-    parser.add_argument('-e', '--excited', metavar='include exclaimation point',
-                        default='.', help='punctuation to include')
+    parser.add_argument('-g', '--greeting', 
+                        metavar='greeting',
+                        default='Howdy', 
+                        help='the greeting used')
+    parser.add_argument('-n', '--name', 
+                        metavar='name',
+                        default='Stranger', 
+                        help='Name to greet')
+    parser.add_argument('-e', '--excited',                         
+                        action='store_true', 
+                        help='punctuation to include')
 
 
 
@@ -32,8 +38,12 @@ def main():
     ## define the main program
 
     args = get_args()
-    print(args.greeting + ' ' + args.name + args.excited)
-
+   
+    if args.excited == True:
+        print(args.greeting + ', ' + args.name + '!')
+    else:
+        print(args.greeting + ', ' + args.name + '.')
+    
 #-------------------------------
 if __name__ == '__main__':
     main()
