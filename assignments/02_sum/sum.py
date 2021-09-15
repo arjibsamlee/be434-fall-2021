@@ -20,12 +20,6 @@ def get_args():
                         metavar='int',
                         nargs='+',
                         help='integers to add')
-   
-   
-    parser.add_argument('-s',
-                        '--sorted',
-                        help='sort the items',
-                        action='store_true')
 
     return parser.parse_args()
 
@@ -42,9 +36,8 @@ def main():
    
 
     
-  #  if args.sorted:
-   #     INT.sort()
-    #numbers = ''
+
+    numbers = ''
     for trk in range(num):
         if not type(int(INT[trk])) is int:
            print ("Only Integers Allowed")
@@ -54,6 +47,7 @@ def main():
             trk = trk - 1
         else:
             Total = Total + int(INT[trk])
+            numbers = ''.join(INT)
             
 
 
