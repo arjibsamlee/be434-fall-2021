@@ -18,7 +18,7 @@ def get_args():
 
     parser.add_argument('INT',
                         metavar='int',
-                        nargs='+',
+                       nargs='+',
                         help='integers to add')
 
     return parser.parse_args()
@@ -39,8 +39,11 @@ def main():
 
     numbers = ''
     for trk in range(num):
-        if not type(int(INT[trk])) is int:
-           print ("Only Integers Allowed")
+        try: 
+            not type(int(INT[trk])) is int
+
+        except:
+            print ("usage: Only Integers Allowed")
         if trk > 0:
             Total = Total + int(INT[trk])
             numbers = ' + '.join(INT)
@@ -52,7 +55,7 @@ def main():
 
 
 
-    print('You are adding {} = '.format(numbers) + str(Total))
+    print('{} = '.format(numbers) + str(Total))
     
 
 
