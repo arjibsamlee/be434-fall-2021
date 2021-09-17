@@ -33,24 +33,33 @@ def main():
     args = get_args()
     notes = args.positional
     trk = len(notes)
+
+    Do = 'Do, A deer, a female deer'
+    Re = 'Re, A drop of golden sun'
+    Mi = 'Mi, A name I call myself'
+    Fa = 'Fa, A long long way to run'
+    So = 'Sol, A needle pulling thread'
+    La = 'La, A note to follow sol'
+    Ti = 'Ti, A drink with jam and bread'
     
-    lyrics = dict([
-    ('Do', 'Do, A deer, a female deer'),
-    ('Re', 'Re, A drop of golden sun'),
-    ('Mi', 'Mi, A name I call myself'),
-    ('Fa', 'Fa, A long long way to run'),
-    ('Sol', 'Sol, A needle pulling thread'),
-    ('La', 'La, A note to follow sol'),
-    ('Ti', 'Ti, A drink with jam and bread')
-    ])
-    
-    #print(lyrics)
     #print(f'positional = "{notes}"')
 
     for trk in range(len(notes)):
         # print('start for loop')
-        if notes[trk] in lyrics:
-            print(lyrics[notes[trk]])       
+        if notes[trk] == 'Do':
+            print(Do)
+        elif notes[trk] == 'Re':
+            print(Re)
+        elif notes[trk] == 'Mi':
+            print(Mi)
+        elif notes[trk] == 'Fa':
+            print(Fa)
+        elif notes[trk] == 'Sol':
+            print(So)
+        elif notes[trk] == 'La':
+            print(La)
+        elif notes[trk] == 'Ti':
+            print(Ti)
         else:
             print('I don\'t know "'+ notes[trk] + '"')
 
