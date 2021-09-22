@@ -1,0 +1,12 @@
+Author : Megan Kane <arjibsamlee@yahoo.com>
+Date   : 2021-09-22
+Purpose: Provide informtion on Tamriel, its countries, cultures and lore
+
+Process:
+    1.) Use new.py to make a new file 'tamriel.py'
+    2.) Create the following files:
+
+
+To run test.py use:
+    pytest -xv --pylint --flake8 test.py
+    
