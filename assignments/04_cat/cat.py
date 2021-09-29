@@ -6,9 +6,7 @@ Purpose: concatenate a file
 """
 
 import argparse
-import os
-import io
-import sys
+
 
 # --------------------------------------------------
 def get_args():
@@ -20,13 +18,13 @@ def get_args():
 
     parser.add_argument('file',
                         metavar='FILE',
-                        
+                        type=argparse.FileType('rt'),
                         nargs='+',
                         help='one or more file names')
 
     parser.add_argument('-n',
                         '--number',
-                        help='print line numbers',                        
+                        help='print line numbers',
                         action='store_true')
 
     return parser.parse_args()
@@ -37,39 +35,20 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
-    
+
     filenames = args.file
     numbers = args.number
-    
-    '''
-    print(filenames)
-    if numbers:
-        print('True')
-    '''
+
     for filename in filenames:
-        linenum = 1        
-        try:
-            os.path.isfile(filename)
-        except:
-            print('No such file or directory: ',filename)
-            
-        else:
-            f = open(filename,'r')
-            lines = f.readlines()   
-            for line in lines:
+        linenum = 1
+        lines = filename.readlines()
+        for line in lines:
 
-                if numbers:
-                    print(str(linenum), " ", line)
-                else:
-                    print(line)
-                linenum += 1
-
-            
-
-
-
-
-    
+            if numbers:
+                print("     ", str(linenum), "\t", line, sep='', end='')
+            else:
+                print(line, end='')
+            linenum += 1
 
 
 # --------------------------------------------------
