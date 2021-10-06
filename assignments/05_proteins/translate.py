@@ -6,12 +6,10 @@ Purpose: translate a given DNA/RNA sequence to amino acids
 """
 
 import argparse
-import os
-from random import sample
-import sys
-import linecache
+
 
 # pylint: disable=W0105
+
 
 # --------------------------------------------------
 def get_args():
@@ -25,13 +23,14 @@ def get_args():
                         metavar='str',
                         help='DNA/RNA sequence')
 
-
     parser.add_argument('-c',
-                        '--condonfile',
+                        '--codons',
                         help='A file with codon translations',
                         metavar='FILE',
                         type=argparse.FileType('rt'),
+                        required=True,
                         default=None)
+
     parser.add_argument('-o',
                         '--outfile',
                         help='A readable file',
@@ -47,56 +46,59 @@ def main():
     """Start of program"""
     # assign
     args = get_args()
-    protein_in  = args.protein
-    codon       = args.condonfile
-    output      = args.outfile
+    protein_in = args.protein
+    codon = args.codons
+    output = args.outfile
 
     testfile = temp_file(codon)
-    file_length = file_lines(testfile)
+    # file_length = file_lines(testfile)
 
     sample = ''
-
 
     # print(f'protein_in = "{protein_in}"')
     # print('codonfile = "{}"'.format(codon.name if codon else ''))
     # print('file_arg = "{}"'.format(output.name if output else ''))
-     # print('the codon file is', file_length, 'lines long.')
-     # print('The first 3 digits of the input are:', get3(protein_in,0), '')
+    # print('the codon file is', file_length, 'lines long.')
+    # print('The first 3 digits of the input are:', get3(protein_in,0), '')
 
-    j = 0 # counter for the section of the DNA/RNA sequence
+    j = 0
+    # counter for the section of the DNA/RNA sequence
 
     while j < len(protein_in):
-        sample = get3(protein_in,j)
+        sample = get3(protein_in, j)
         sample = sample.upper()
-        #print('starting at letter', str(j), 'the next 3 letters of the sequence are:', sample)
-        #print(infile_check(testfile,sample))
-        output.write(infile_check(testfile,sample, 0, 3))
+        # print(infile_check(testfile,sample))
+        output.write(infile_check(testfile, sample, 0, 3))
 
         j += 3
+    # final_out = output.read()
+    print(f'Output written to "{output.name}".')
 
 
-
-#---------------------------------------------------
+# ---------------------------------------------------
 def temp_file(filename):
-    temp = open('temp.txt','w+')
-    for i in filename:
-        temp.write(i)
-       #print('in temp file test')
-    temp.close()
+    """creates a temp file copy to work with without editing original"""
+    with open('temp.txt', 'wt', encoding='utf-8') as temp:
+        for i in filename:
+            temp.write(i)
+        # print('in temp file test')
 
-    return ('temp.txt')
+    return 'temp.txt'
 
-#---------------------------------------------------
+
+# ---------------------------------------------------
 def get3(test_str, num_start):
+    """get 3 digits of a string"""
     twa = ''
     num_end = num_start+3
     twa = test_str[num_start:num_end]
 
     return twa
 
-#---------------------------------------------------
-def file_lines(filename):
 
+# ---------------------------------------------------
+def file_lines(filename):
+    """get number of lines"""
     num_lines, num_words, num_bytes = 0, 0, 0
     for line in filename:
         num_lines += 1
@@ -106,23 +108,23 @@ def file_lines(filename):
     return num_lines
 
 
-#---------------------------------------------------
+# ---------------------------------------------------
+def infile_check(filename, testfile, num_s, num_e):
+    """See if a testfile is in any line of a file"""
+    with open(filename, 'rt', encoding='utf-8') as x:
+        for i in x:
+            # print(i)
+            sample_test = i[num_s:num_e]
+            # print(sample_test)
+            if testfile == sample_test:
+                return i[4]
 
-def infile_check(filename,testfile,num_s,num_e):
-    x = open(filename,'r')
-    for i in x:
-        #print(i)
-        sample_test = i[num_s:num_e]
-        # print(sample_test)
-        if testfile == sample_test:
-            return(i[4])
-
-    x.close()
-    return('-')
-
-
+    return '-'
 
 
 # --------------------------------------------------
 if __name__ == '__main__':
     main()
+
+
+# End file
