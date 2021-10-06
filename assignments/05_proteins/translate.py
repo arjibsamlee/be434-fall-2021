@@ -70,7 +70,7 @@ def main():
         sample = sample.upper()
         #print('starting at letter', str(j), 'the next 3 letters of the sequence are:', sample)
         #print(infile_check(testfile,sample))
-        output.write(infile_check(testfile,sample))
+        output.write(infile_check(testfile,sample, 0, 3))
 
         j += 3
 
@@ -108,11 +108,11 @@ def file_lines(filename):
 
 #---------------------------------------------------
 
-def infile_check(filename,testfile):
+def infile_check(filename,testfile,num_s,num_e):
     x = open(filename,'r')
     for i in x:
         #print(i)
-        sample_test = i[0:3]
+        sample_test = i[num_s:num_e]
         # print(sample_test)
         if testfile == sample_test:
             return(i[4])
