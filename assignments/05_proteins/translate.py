@@ -7,6 +7,7 @@ Purpose: translate a given DNA/RNA sequence to amino acids
 
 import argparse
 import os
+from random import sample
 import sys
 import linecache
 
@@ -111,9 +112,13 @@ def infile_check(filename,testfile):
     x = open(filename,'r')
     for i in x:
         #print(i)
-        if testfile in i:
+        sample_test = i[0:3]
+        # print(sample_test)
+        if testfile == sample_test:
             return(i[4])
+
     x.close()
+    return('-')
 
 
 
