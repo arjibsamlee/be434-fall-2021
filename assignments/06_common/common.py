@@ -69,7 +69,7 @@ def main():
     # print("words that are in common: ",common)
 
     if args.outfile:
-        output.write(common)
+        print(common, file=output)
     else:
         print('{}'.format(common, set='/n'))
 
