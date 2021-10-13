@@ -6,7 +6,7 @@ Purpose: look for commmon words between files
 """
 
 import argparse
-import sys
+
 
 # pylint: disable=W0105
 
@@ -48,7 +48,6 @@ def main():
     twofile = args.file2
     output = args.outfile
 
-
     # print('File 1 = "{}"'.format(onefile.name if onefile else ''))
     # print('File 2 = "{}"'.format(twofile.name if twofile else ''))
 
@@ -64,16 +63,17 @@ def main():
     # print(oneset)
     # print(twoset)
 
-    common = oneset.intersection(twoset)
+    cset = oneset.intersection(twoset)
+    common = "\n".join(str(e) for e in cset)
 
     # print("words that are in common: ",common)
 
     if args.outfile:
         print(common, file=output)
+        # print('in if')
     else:
-        print('{}'.format(common, set='/n'))
-
-
+        print(common, sep='\n')
+        # print('in else')
 
 
 # --------------------------------------------------
