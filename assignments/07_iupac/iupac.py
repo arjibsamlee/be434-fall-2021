@@ -7,7 +7,7 @@ Purpose: Translate IUPAC encoded DNA to regular expression
 
 import argparse
 import sys
-import os
+
 # from pprint import pprint
 
 # pylint: disable=W0105
@@ -23,51 +23,52 @@ def get_args():
 
     parser.add_argument('sequence',
                         metavar='SEQ',
-                        nargs= '+',
+                        nargs='+',
                         type=str,
                         help='A DNA sequence')
 
     parser.add_argument('-o',
-                            '--outfile',
-                            help='Location for output',
-                            metavar='FILE',
-                            type=argparse.FileType('wt'),
-                            default=[sys.stdout])
+                        '--outfile',
+                        help='Location for output',
+                        metavar='FILE',
+                        type=argparse.FileType('wt'),
+                        default=[sys.stdout])
 
     return parser.parse_args()
 
 
 # --------------------------------------------------
 def main():
-    """Make a jazz noise here"""
+    """IUPAC decoding"""
 
     args = get_args()
     seq = args.sequence
-    # out_fh = args.outfile
-    is_file = 'no'  if args.outfile == [sys.stdout] else 'yes'
+    data = range(len(seq))
+
+    is_file = 'no' if args.outfile == [sys.stdout] else 'yes'
     # print(args)
     # print(is_file)
 
     iupac_table = {}
-    iupac_codes = open('iupac_codes.txt')
+    # iupac_codes = open('iupac_codes.txt', encoding='utf-8')
 
-    for line in iupac_codes:
-        key, val = line.split()
-        iupac_table[key] = val
+    with open('iupac_codes.txt', encoding='utf-8') as iupac_codes:
+        for line in iupac_codes:
+            key, val = line.split()
+            iupac_table[key] = val
 
     # pprint(iupac_table)
 
-    for index in range(len(seq)):
+    for index in data:
         protein = ''
         seq_now = seq[index]
         # print(seq_now)
 
         for i in seq_now:
-           # print('in for loop')
+            # print('in for loop')
             compare = iupac_table.get(i.upper())
 
-
-           # print('compare this ' + i + ' to ' + compare)
+            # print('compare this ' + i + ' to ' + compare)
 
             if i == compare:
                 protein += compare
@@ -78,23 +79,13 @@ def main():
         # print(seq_now + ' ' + protein)
 
         if is_file == 'yes':
-           print(seq_now + ' ' + protein, file=args.outfile)
+            print(seq_now + ' ' + protein, file=args.outfile)
 
         else:
             print(seq_now + ' ' + protein)
 
     if is_file == 'yes':
-        print(f'Done, see output in "{args.outfile.name}".')
-
-
-
-
-
-
-
-
-
-
+        print(f'Done, see output in "{args.outfile.name}"')
 
 
 # --------------------------------------------------
