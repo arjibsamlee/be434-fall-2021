@@ -1,0 +1,16 @@
+Here are some notes on writing the file.
+
+functions: 
+
+get_char will take 3 arguments and return the number of characters of a string requested.
+
+def get_char(test_str, num_start, num_char):
+    """get desired number of chars of a string"""
+    ichi = ''
+    num_end = num_start + num_char
+    ichi = test_str[num_start:num_end]
+
+    return ichi
+    
+
+
