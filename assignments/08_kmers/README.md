@@ -33,12 +33,12 @@ The program should generate errors if either of the file arguments is invalid:
 ```
 $ ./kmers.py foo bar
 usage: kmers.py [-h] [-k int] FILE1 FILE2
-kmers.py: error: argument FILE1: can't open 'foo': 
+kmers.py: error: argument FILE1: can't open 'foo':
 [Errno 2] No such file or directory: 'foo'
 
 $ ./kmers.py ./inputs/foo.txt bar
 usage: kmers.py [-h] [-k int] FILE1 FILE2
-kmers.py: error: argument FILE2: can't open 'bar': 
+kmers.py: error: argument FILE2: can't open 'bar':
 [Errno 2] No such file or directory: 'bar'
 ```
 
@@ -189,7 +189,7 @@ If you change `-k` to 2, it should print this:
 ```
 $ ./kmers.py inputs/foo.txt inputs/bar.txt -k 2
 {'fo': 1, 'oo': 1, 'ba': 2, 'ar': 1, 'az': 1}
-{'qu': 1, 'uu': 1, 'ux': 1, 'ba': 1, 'ar': 1, 'fl': 1, 'li': 1, 'ip': 1, 
+{'qu': 1, 'uu': 1, 'ux': 1, 'ba': 1, 'ar': 1, 'fl': 1, 'li': 1, 'ip': 1,
  'fo': 1, 'oo': 1}
 ```
 

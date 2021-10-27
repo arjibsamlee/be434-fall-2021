@@ -8,7 +8,7 @@ Purpose: look for commmon words between files
 import argparse
 
 
-# pylint: disable=W0105
+# pylint: disable=W0105,too-many-locals
 
 
 # --------------------------------------------------
@@ -36,7 +36,6 @@ def get_args():
                         type=int,
                         default=3)
 
-
     args = parser.parse_args()
 
     if args.kmer <= 0:
@@ -48,7 +47,6 @@ def get_args():
 # --------------------------------------------------
 def main():
     """Make a jazz noise here"""
-
     args = get_args()
     onefile = args.file1
     twofile = args.file2
@@ -63,55 +61,64 @@ def main():
     onedict = {}
     twodict = {}
 
+    onelist = []
+    twolist = []
 
     for line in onefile.read().split():
-        print(line)
+        # print(line)
         for i in range(0, len(line)):
-            kmer = get_char(line, i, i + len_kmer)
+            # print( i)
+            kmer = get_char(line, i, len_kmer)
             # print(kmer)
-            oneset.add(kmer)
-            i += len_kmer
+            if kmer is not None:
+                oneset.add(kmer)
+                onelist.append(kmer)
+            i += 1
     # print('first set of kmers ', oneset)
 
     for line in twofile.read().split():
-        print(line)
+        # print(line)
         for i in range(0, len(line)):
-            kmer = get_char(line, i, i + len_kmer)
-            print(kmer)
-            twoset.add(kmer)
+            kmer = get_char(line, i, len_kmer)
+            # print(kmer)
+            if kmer is not None:
+                twoset.add(kmer)
+                twolist.append(kmer)
             i += 1
     # print('first set of kmers ', twoset)
 
-    oneset.remove(None)
-    twoset.remove(None)
+    # oneset.remove(None)
+    # twoset.remove(None)
 
     cset = oneset.intersection(twoset)
     # print(cset)
 
-    common = " ".join(str(e) for e in cset)
+    # common = " ".join(str(e) for e in cset)
     # print("Kmers that are in common: ",common)
 
     for x in cset:
-        onenum = list(oneset).count(x)
-        twonum = list(twoset).count(x)
+        # print('items of cset:',x)
+        onenum = onelist.count(x)
+        twonum = twolist.count(x)
 
         onedict.update({x: onenum})
         twodict.update({x: twonum})
 
-        print(x, '       ', onenum, twonum, sep='   ', end='\n')
+        print(f'{x:10}{onenum:6}{twonum:6}')
 
 
-#----------------------------------------------------------------
+# ----------------------------------------------------------------
 def get_char(test_str, num_start, num_char):
     """get desired number of chars of a string"""
     ichi = ''
     num_end = num_start + num_char
     ichi = test_str[num_start:num_end]
+    # print(ichi, 'characters collected')
     if len(ichi) != num_char:
-        return None
-    else:
-        print('get kmer number of characters', ichi)
-        return ichi
+        ichi = None
+
+    # print('get kmer number of characters', ichi)
+    return ichi
 
 
 # --------------------------------------------------------------
