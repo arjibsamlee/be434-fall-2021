@@ -7,6 +7,9 @@ Purpose: Sing Do Re Mi like Maria
 
 import argparse
 
+# pylint: disable=W0105,consider-using-enumerate
+# flake8: noqa
+
 
 # --------------------------------------------------
 def get_args():
@@ -21,8 +24,6 @@ def get_args():
                         nargs='+',
                         help='Solfege')
 
-    
-
     return parser.parse_args()
 
 
@@ -33,7 +34,7 @@ def main():
     args = get_args()
     notes = args.positional
     trk = len(notes)
-    
+
     lyrics = dict([
     ('Do', 'Do, A deer, a female deer'),
     ('Re', 'Re, A drop of golden sun'),
@@ -41,25 +42,19 @@ def main():
     ('Fa', 'Fa, A long long way to run'),
     ('Sol', 'Sol, A needle pulling thread'),
     ('La', 'La, A note to follow sol'),
-    ('Ti', 'Ti, A drink with jam and bread')
-    ])
-    
-    #print(lyrics)
-    #print(f'positional = "{notes}"')
+    ('Ti', 'Ti, A drink with jam and bread')])
+
+    # print(lyrics)
+    # print(f'positional = "{notes}"')
 
     for trk in range(len(notes)):
         # print('start for loop')
         if notes[trk] in lyrics:
-            print(lyrics[notes[trk]])       
+            print(lyrics[notes[trk]])
         else:
             print('I don\'t know "'+ notes[trk] + '"')
 
         trk -= 1
-
-
-
-
-
 
 
 # --------------------------------------------------
