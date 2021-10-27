@@ -1,5 +1,35 @@
 Here are some notes on writing the file.
 
+For each file a list will be created of every kmer in the file.
+the 2 lists will be compared to each other. A list of common kmers will be created.
+For each file a dictionary the Kmer and number of times it occurs in the relevant list will be counted. there will be 2 dictionaries.
+
+
+    args = get_args()
+    onefile = args.file1
+    twofile = args.file2
+    lem_kmer = args.kmer
+
+    # print('File 1 = "{}"'.format(onefile.name if onefile else ''))
+    # print('File 2 = "{}"'.format(twofile.name if twofile else ''))
+
+    oneset = set()
+    twoset = set()
+
+    for word in onefile.read().split():
+        oneset.add(word)
+
+    for word in twofile.read().split():
+        twoset.add(word)
+
+    # print(oneset)
+    # print(twoset)
+
+    cset = oneset.intersection(twoset)
+    common = "\n".join(str(e) for e in cset)
+        
+    # print("Kmers that are in common: ",common)
+
 functions: 
 
 get_char will take 3 arguments and return the number of characters of a string requested.
