@@ -16,7 +16,7 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='look for commmon words between files',
+        description='Find common kmers',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('file1',
@@ -27,16 +27,22 @@ def get_args():
     parser.add_argument('file2',
                         metavar='FILE2',
                         type=argparse.FileType('rt'),
-                        help='Input file 1')
-   
-  parser.add_argument('-k',
-                        '--kmer',
-                        help='Number of characters in kmer',
-                        metavar='KMER',
-                        type=int,
-                        default=3)    
+                        help='Input file 2')
 
-    return parser.parse_args()
+    parser.add_argument('-k',
+                        '--kmer',
+                        help='K-mer size',
+                        metavar='int',
+                        type=int,
+                        default=3)
+
+
+    args = parser.parse_args()
+
+    if args.kmer <= 0:
+        parser.error(f'--kmer "{args.kmer}" must be > 0')
+
+    return args
 
 
 # --------------------------------------------------
@@ -48,58 +54,66 @@ def main():
     twofile = args.file2
     len_kmer = args.kmer
 
-    print('File 1 = "{}"'.format(onefile.name if onefile else ''))
-    print('File 2 = "{}"'.format(twofile.name if twofile else ''))
+    # print('File 1 = "{}"'.format(onefile.name if onefile else ''))
+    # print('File 2 = "{}"'.format(twofile.name if twofile else ''))
 
     oneset = set()
     twoset = set()
-    
+
     onedict = {}
     twodict = {}
-   
 
-    for line in onefile.readline():
+
+    for line in onefile.read().split():
         print(line)
-        for i in line:
+        for i in range(0, len(line)):
             kmer = get_char(line, i, i + len_kmer)
-            print(kmer)
+            # print(kmer)
             oneset.add(kmer)
-            
-     for line in twofile.readline():
+            i += len_kmer
+    # print('first set of kmers ', oneset)
+
+    for line in twofile.read().split():
         print(line)
-        for i in line:
+        for i in range(0, len(line)):
             kmer = get_char(line, i, i + len_kmer)
             print(kmer)
             twoset.add(kmer)
-            
-    print(oneset)
-    print(twoset)
+            i += 1
+    # print('first set of kmers ', twoset)
+
+    oneset.remove(None)
+    twoset.remove(None)
 
     cset = oneset.intersection(twoset)
-    common = "\n".join(str(e) for e in cset)
-    print("Kmers that are in common: ",common)
-    
-    for x in common:
-        onenum = oneset.count(x)
-        twonum = twoset.count(x)
-        
-        onedict.update(x, onenum)
-        twodict.update(x, twonum)
-        
+    # print(cset)
+
+    common = " ".join(str(e) for e in cset)
+    # print("Kmers that are in common: ",common)
+
+    for x in cset:
+        onenum = list(oneset).count(x)
+        twonum = list(twoset).count(x)
+
+        onedict.update({x: onenum})
+        twodict.update({x: twonum})
+
         print(x, '       ', onenum, twonum, sep='   ', end='\n')
-        
-          
+
+
 #----------------------------------------------------------------
 def get_char(test_str, num_start, num_char):
     """get desired number of chars of a string"""
     ichi = ''
     num_end = num_start + num_char
     ichi = test_str[num_start:num_end]
+    if len(ichi) != num_char:
+        return None
+    else:
+        print('get kmer number of characters', ichi)
+        return ichi
 
-    return ichi
-  
 
 # --------------------------------------------------------------
 if __name__ == '__main__':
     main()
-
