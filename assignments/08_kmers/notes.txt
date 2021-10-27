@@ -8,25 +8,48 @@ For each file a dictionary the Kmer and number of times it occurs in the relevan
     args = get_args()
     onefile = args.file1
     twofile = args.file2
-    lem_kmer = args.kmer
+    len_kmer = args.kmer
 
     # print('File 1 = "{}"'.format(onefile.name if onefile else ''))
     # print('File 2 = "{}"'.format(twofile.name if twofile else ''))
 
     oneset = set()
     twoset = set()
+    
+    onedict = {}
+    twodict = {}
+   
 
-    for word in onefile.read().split():
-        oneset.add(word)
-
-    for word in twofile.read().split():
-        twoset.add(word)
-
+    for line in onefile.readline():
+        print(line)
+        for i in line:
+            kmer = get_char(line, i, i + len_kmer)
+            print(kmer)
+            oneset.add(kmer)
+            
+     for line in twofile.readline():
+        print(line)
+        for i in line:
+            kmer = get_char(line, i, i + len_kmer)
+            print(kmer)
+            twoset.add(kmer)
+            
     # print(oneset)
     # print(twoset)
 
     cset = oneset.intersection(twoset)
     common = "\n".join(str(e) for e in cset)
+    
+    for x in common:
+        onenum = oneset.count(x)
+        twonum = twoset.count(x)
+        
+        onedict.update(x, onenum)
+        twodict.update(x, twonum)
+        
+        print(x, '       ', onenum, twonum, sep='   ', end='\n')
+        
+    
         
     # print("Kmers that are in common: ",common)
 
@@ -41,6 +64,14 @@ def get_char(test_str, num_start, num_char):
     ichi = test_str[num_start:num_end]
 
     return ichi
+    
+def get_lines
+    for fh in args.file:
+        num_lines, num_words, num_bytes = 0, 0, 0
+        for line in fh:
+            num_lines += 1
+            num_bytes += len(line)
+            num_words += len(line.split())
     
 
 
