@@ -7,12 +7,12 @@ Purpose: I don't know yet
 
 import argparse
 import os
-import Bio
+
+from Bio import SeqIO
 
 
-# pylint: disable=W0105
-
-
+# pylint: disable=W0105,missing-function-docstring,unspecified-encoding,consider-using-with
+# flake8: noqa
 # --------------------------------------------------
 def get_args():
     """Get command-line arguments"""
@@ -31,7 +31,7 @@ def get_args():
                         '--outdir',
                         help='Output directory',
                         metavar='DIR',
-                        type=argparse.FileType('wt'),
+                        type=str,
                         default='split')
 
 
@@ -46,7 +46,6 @@ def get_args():
     return parser.parse_args()
 
 
-
 # --------------------------------------------------
 def main():
     """Make a jazz noise here"""
@@ -55,26 +54,25 @@ def main():
     filenames = args.file
     directory = args.outdir
 
-    parentdir = os.getcwd()
+    # parentdir = os.getcwd()
 
-    outpath = os.path.join(parentdir,directory.name)
+    # outpath = os.path.join(parentdir,directory.name)
 
+    # print(directory.name, outpath)
 
-    print(directory.name, outpath)
+    if os.path.exists(directory) is not True:
+        os.makedirs(directory)
+        # print("new directory:",outpath)
 
-    if os.path.exists(outpath) is not True:
-        os.makedirs(outpath)
-        print("new directory:",outpath)
+    for fh in filenames:
+        # print(_)
+        split_biofile(fh, directory)
 
-    for _ in filenames:
-        print(_)
-        split_biofile(_)
-
-    print("Done, files in", outpath)
+    print('Done, see output in "', directory,'"', sep="")
 
 
 # ---------------------------
-def split_biofile(filename):
+def split_biofile(filename, out):
     list1 = []
     list2 = []
 
@@ -84,42 +82,34 @@ def split_biofile(filename):
 
     # get each record. Put the even into list2 and the odd into list1
     for rec in reader:
-        print('ID :', rec.id)
-        print('Seq:', str(rec.seq))
+        # print('ID :', rec)
+        # print('Seq:', str(rec.seq))
         if count % 2 == 0:
-            list2.append(rec.id,rec.seq)
+            list2.append(rec)
         else:
-            list1.append(rec.id,rec.seq)
+            list1.append(rec)
+
         count += 1
 
     # get file name and extention
-    f_name, f_ext = os.path.splitext(filename)
+    f_name, f_ext = os.path.splitext(os.path.basename(filename.name))
 
-    file1_name = f_name + "_01" + f_ext
-    file2_name = f_name + "_02" + f_ext
+    file1_name = os.path.join(out, f_name + "_1" + f_ext)
+    file2_name = os.path.join(out, f_name + "_2" + f_ext)
 
     file1 = open(file1_name,"a")
     file2 = open(file2_name,"a")
 
     for _x in list1:
         # print list items to file1
-        file1.write(_x)
-
+        SeqIO.write(_x, file1, 'fasta')
 
     for _y in list2:
         # print list items into file2
-        file2.write(_y)
+        SeqIO.write(_y, file2, 'fasta')
 
     file1.close()
     file2.close()
-
-
-
-
-
-
-
-
 
 
 # --------------------------------------------------
