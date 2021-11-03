@@ -4,11 +4,11 @@ Purpose: Provide informtion on Tamriel, its countries, cultures and lore
 
 Process:
     1.) Use new.py to make a new file 'tamriel.py'
-    2.) Create the following files:
-        -   planes: the planes of reality related to Tamriel
-        -   countries: a file with all the different countries in Tamriel
+    2.) Possible files to create:
+        -   planes: the planes of reality related to Tamriel (location)
+        -   countries: a file with all the different countries in Tamriel (location)
         -   races: a file with the different races
-        -   powers: the aedra, dadric princes
+        -   powers: the aedra, dadric princes (powers)
         -   beings: other types of beings outside of the humanoids and powers e.g. dragons, daedra
         -   magicka: about magicka
         -   games: list of the elder scrolls games and info about them
@@ -16,7 +16,7 @@ Process:
         -   logos: each of the symbols e.g. the imperial symbol
     3.) Build the following functions:
         -   read csv files
-        -
+        -   take inputs: -r races -l locations nothing entered after will provide a list of all options e.g. -r
 
 
 To run test.py use:
