@@ -9,6 +9,8 @@ SAMPLE1 = 'samples/sample1.txt'
 SAMPLE2 = 'samples/sample2.txt'
 SAMPLE3 = 'samples/sample3.txt'
 
+# pylint: disable=W0105,missing-function-docstring,unspecified-encoding,consider-using-with
+# flake8: noqa
 
 # --------------------------------------------------
 def test_exists():
