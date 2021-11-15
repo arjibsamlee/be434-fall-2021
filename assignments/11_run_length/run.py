@@ -41,6 +41,8 @@ def main():
         # print(seq)
         infile =[]
 
+
+
         for line in seq:
             line.strip('\n')
             # print(line)
