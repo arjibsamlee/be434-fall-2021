@@ -41,8 +41,6 @@ def main():
         # print(seq)
         infile =[]
 
-
-
         for line in seq:
             line.strip('\n')
             # print(line)
@@ -53,7 +51,6 @@ def main():
     else:
         # print('the sequence was given as text', args.text)
         seqs = rle(args.text)
-
 
     # print("the translated sequnce is: ", seqs)
     print(seqs)
