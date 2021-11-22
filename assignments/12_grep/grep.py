@@ -62,14 +62,16 @@ def main():
 
     matches = ''
 
+    # print(len(files))
+
 
     for file in files:
 
-        if len(files) > 1:
-            # print(file.name, ':', sep='', end=' ')
-            matches += file.name
-            matches += ':'
-            # print(matches)
+        # if len(files) > 1:
+        #     # print(file.name, ':', sep='', end=' ')
+        #     matches += file.name
+        #     matches += ':'
+        #     # print(matches)
 
         lines = file.readlines()
 
@@ -86,15 +88,16 @@ def main():
             elif re.search(pat, line):
                 # print(line, end='')
                 matched += line
-                # print(matches)
+                # print("match:", matched)
             else:
                 # print('nomatch')
                 pass
-            if matched and len(files) > 1:
+            if matched !='' and len(files) > 1:
                 # print(file.name, ':', sep='', end=' ')
                 matches += file.name
                 matches += ':'
                 # print(matches)
+
             matches += matched
 
     print(matches)
