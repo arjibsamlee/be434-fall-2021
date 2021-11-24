@@ -6,7 +6,6 @@ Purpose: return lines with provided words.
 """
 
 import argparse
-import os
 import sys
 import re
 
@@ -40,9 +39,9 @@ def get_args():
 
     parser.add_argument('-o',
                         '--outfile',
-                        help='A readable file',
+                        help='Output',
                         metavar='FILE',
-                        type=argparse.FileType('wt'),
+                        type=str,
                         default=sys.stdout)
 
     return parser.parse_args()
@@ -55,6 +54,7 @@ def main():
     args = get_args()
     pat = args.pattern
     files = args.file
+    outfile = args.outfile
 
     # findall in re look at regular expressions
 
@@ -100,7 +100,12 @@ def main():
 
             matches += matched
 
-    print(matches)
+    if outfile != sys.stdout:
+        f = open(outfile,'x')
+        f.write(matches)
+
+    else:
+        print(matches)
 
 
 # --------------------------------------------------
