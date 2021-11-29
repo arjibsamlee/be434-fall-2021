@@ -1,10 +1,10 @@
 type,subtype,name,description
-being,aedra,Akatosh,The chief deity of the Divines. The Dragon God of Time and the Lord of the Dragons. He is the first of the Gods.
+being,aedra,Akatosh,The chief deity of theï¿½Divines. Theï¿½Dragon God of Time and theï¿½Lord of the Dragons. He is the first of the Gods.
 being,daedra,Molag Bal,One of the 17 Daedric Princes. Known also as the God of Scemes Harvester of Souls and Lord of Domination and Lord of Brutality. His personal realm is Coldharbor where he traps the souls of mortals.
 being,daedra,Flame atronoch,A race of elemental daedra native to the realm Infernace. They are summonable and are the source of the alchemical ingrediant fire salts.
-being,other,Dragon,Also known as Dovah or Dov. These are large flying reptilian beings with 2 wings and 2 legs. They are immortal intellegent and have an affinity for magic. They were worshiped as gods by the ancient Nords in Skyrim. 
+being,other,Dragon,Also known as Dovah or Dov. These are large flying reptilian beings with 2 wings and 2 legs. They are immortal intellegent and have an affinity for magic. They were worshiped as gods by the ancient Nords in Skyrim.
 being,other,Senche,Large felines found in Elswyr and Valenwood. Some are intellegent and capable of speech.
-being,other,Vampire,Undead bloodrinkers sensative to sun and flame.  Known also as the scion of Bal and nosferatu. There are 3 deseases which cause vampirism. The infection can be cured within 72 hours of infection. 
+being,other,Vampire,Undead bloodrinkers sensative to sun and flame.  Known also as the scion of Bal and nosferatu. There are 3 deseases which cause vampirism. The infection can be cured within 72 hours of infection.
 being,other,Werewolf,Individuals infected with lycanthropy which permits the transformation into a bipedal wolf-like creature. Called Hircine's Gift as it was created by the Daedric Prince Hircine. This is a curable condition.
 being,other,Lamia,These beastfolk have the torso of a woman and the tail of a snake. They are intelligant and wellspoken and capable of great magic.
 being,other,Minotaur,Also know as man-bulls and bull-men. They are beastfolk native to Cyrodill having the body of a man and head of a bull. They are intellegent and capable of speech. Some have the ability to perform magic.
@@ -15,29 +15,29 @@ being,other,Giant,Enormous humanoids with great strength. With moderate intellig
 being,other,Goblin,Also called Gobs. These primitave humanoids can be found throught Tamirel. They tent to be aggressive and warlike.
 game,RPG,Elder Scrolls Arena,The first game in the Elder Scrolls released by Bethesda Softworks on 25 March 1994. The game is set in the 3rd Era of Tamriel between the years 3E 389 and 3E 399. The game is free to download from bethesda.net.
 game,RPG,Elder Scrolls: Daggerfall,The second game in the Elder Scrolls released by Bethesda Softworks on 31 August 1996. The game is set in the 3rd Era of Tamriel between the year 3E 405.  The game is free to download from bethesda.net.
-game,RPG,Elder scrolls III: Morrowind,The third game in the Elder Scrolls released by Bethesda Softworks on 1 May 2002. The game is set in Vvardenfell and Morrowind in the 427th year of the 3rd era. The game is available for sale on multiple platforms. 
-game,RPG,Elder Scrolls IV: Oblivion,The fourth game in the Elder Scrolls released by Bethesda Softworks on 20 March 2006. The game is set in Cyrodiil and the planes of oblivion in the 433rd year of the 3rd era. The game is available for sale on multiple platforms. 
+game,RPG,Elder scrolls III: Morrowind,The third game in the Elder Scrolls released by Bethesda Softworks on 1 May 2002. The game is set in Vvardenfell and Morrowind in the 427th year of the 3rd era. The game is available for sale on multiple platforms.
+game,RPG,Elder Scrolls IV: Oblivion,The fourth game in the Elder Scrolls released by Bethesda Softworks on 20 March 2006. The game is set in Cyrodiil and the planes of oblivion in the 433rd year of the 3rd era. The game is available for sale on multiple platforms.
 game,RPG,Elder Scrolls V: Skyrim,The fifth game in the Elder Scrolls was originally released by Bethesda Softworks on 11 November 2011. The special edition was released on 28 October 2016 and the 10th Aniversery edition was released on 11 November 2021. It is available for purchase on multiple platforms and devices.
 game,MMORPG,Elder Scrolls Online,Also know as ESO. This is a massive multiplayer online spinnoff of the Elder Scrolls franchise. Originally released by ZeniMax Online Studios on 4 April 2014 the game continues to release additional content. Set in the second era ESO starts in the 582nd year of the 2nd era.
-location,city,Winterhold,Add description
-location,continent,Tamriel,Add description
-location,province,Skyrim,Add description
-location,plane,Coldharbor,Add description
-location,plane,Nirn,Add description
-location,realm,Mundus,Add description
-race,elf,Altmer,Add description
-race,elf,Dunmer,Add description
-race,elf,Bosmer,Add description
-race,elf,Orsmer,Add description
-race,elf,Falmer,Add description
-race,elf,Maormer,Add description
-race,elf,Alyeid,Add description
-race,elf,Dwemer,Add description
-race,elf,Chimer,Add description
-race,man,Nord,Add description
-race,man,Imperial,Add description
-race,man,Redguard,Add description
-race,man,Breton,Add description
-race,other,Khajit,Add description
-race,other,Argonian,Add description
-location,province,Vardenfell,Add description
+location,city,Winterhold,One of the 9 major cities of Skyrim. The city serves as the capital to the hold of the same name. It is best known for being the location of the College of Winterhold. Also one of the oldest cities being founded in the 1st era.
+location,continent,Tamriel,The primary landmass in the games and one of 4 continents on Nirn.
+location,province,Skyrim,The northernmost province of Tamriel. Currently home to the Nords.
+location,plane,Coldharbor,Plane of Oblivion created and ruled by Molag Ball.
+location,plane,Nirn,The planet that is the mortal plane. It floats in the void of Oblivion.
+location,realm,Mundus,Also known as the Gray Maybe and Mundex Terrene. The main realm of reality and was created by the eight Divines known as Aedra (anscestors).
+race,elf,Altmer,Playable race. Also known as High Elves.
+race,elf,Dunmer,Playable race. Also known as Dark Elves.
+race,elf,Bosmer,Playable race. Also known as Wood Elves.
+race,elf,Orsmer,Playable race. Also known as Orcs.
+race,elf,Falmer,Non-Playable race. Fallen elves that used to be Snow Elves.
+race,elf,Maormer,Non-Playable race. Also known as Sea-Elves.
+race,elf,Alyeid,Non-Playable race. Ancient elves.
+race,elf,Dwemer,Non-Playable race. Also known as Dwarves.
+race,elf,Chimer,Non-Playable race. These were cursed and became the Dunmer.
+race,man,Nord,Playable race. Humans from the North of Tamriel in Skyrim and Atmora. Very pale skinned.
+race,man,Imperial,Playable race. Humans from Cyrodiil.
+race,man,Redguard,Playable race. Humans from the mountains near Daggerfall. Can be very dark skinned.
+race,man,Breton,Playable race. Humans from High Rock. Said to have elven heritage.
+race,Beastfolk,Khajit,Playable race. Cat people from Elsweyr.
+race,Beastfolk,Argonian,Playable Race. Reptilian people from the Black Marsh.
+location,province,Vvardenfell,Island provence also known as th Black Isle. This is the location of the Red Mountain.
