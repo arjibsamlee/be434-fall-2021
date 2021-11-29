@@ -28,9 +28,9 @@ def test_usage():
 def test_01():
     """test"""
 
-    rv, out = getstatusoutput(f'{prg} 123-456-7890')
+    rv, out = getstatusoutput(f'{prg}')
     assert rv == 0
-    assert out == '987-604-3215'
+    assert out == 'Welcome to the Elder Scrolls Guide!'
 
 
 # --------------------------------------------------
