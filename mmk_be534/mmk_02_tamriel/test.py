@@ -30,13 +30,22 @@ def test_01():
 
     rv, out = getstatusoutput(f'{prg}')
     assert rv == 0
-    assert out == 'Welcome to the Elder Scrolls Guide!'
+    assert out.startswith('Welcome to the Elder Scrolls Guide!')
 
 
 # --------------------------------------------------
 def test_02():
     """test"""
 
-    rv, out = getstatusoutput(f'{prg} "That number to call is 098-765-4321."')
+    rv, out = getstatusoutput(f'{prg} -r race')
     assert rv == 0
-    assert out.rstrip() == 'That number to call is 512-340-6789.'
+    assert out.startswith("getting requested")
+
+
+# --------------------------------------------------
+def test_03():
+    """test"""
+
+    rv, out = getstatusoutput(f'{prg} -r ce')
+    assert rv == 0
+    assert out.startswith("Not a valid request.")

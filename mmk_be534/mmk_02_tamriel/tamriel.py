@@ -6,11 +6,10 @@ Purpose: Provide informtion on Tamriel, its countries, cultures and lore
 """
 
 import argparse
-# import csv
-# import io
 import pandas as pd
-# from tabulate import tabulate
 
+# pylint: disable=W0105,consider-using-in,line-too-long,missing-function-docstring,unspecified-encoding,consider-using-with
+# flake8: noqa
 
 
 # --------------------------------------------------
@@ -47,7 +46,7 @@ def main():
     typelist = []
     typelist = get_types(tamriel_data)
 
-    if requested == 'all' or requested == None:
+    if requested == 'all' or requested is None:
         print("Welcome to the Elder Scrolls Guide!")
         print(f"You can request information on {typelist}")
         print("just type -r followed by one of the keywords.")
@@ -78,7 +77,7 @@ def get_types(tamriel_panda):
 def get_items(searchterm, tamriel_panda):
     "This searches for all entries that are classified based on the search term."
     print("getting requested data")
-    print(tamriel_panda)
+    # print(tamriel_panda)
 
     items = ""
 
