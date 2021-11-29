@@ -6,9 +6,11 @@ Purpose: Provide informtion on Tamriel, its countries, cultures and lore
 """
 
 import argparse
-import csv
-import io
-from tabulate import tabulate
+# import csv
+# import io
+import pandas as pd
+# from tabulate import tabulate
+
 
 
 # --------------------------------------------------
@@ -39,19 +41,54 @@ def main():
 
     requested = args.request
     # print(requested)
+    datafile = "mmk_tamriel.csv" # this is the data file
+    tamriel_data = pd.read_csv(datafile)
 
     typelist = []
+    typelist = get_types(tamriel_data)
 
     if requested == 'all' or requested == None:
         print("Welcome to the Elder Scrolls Guide!")
         print(f"You can request information on {typelist}")
         print("just type -r followed by one of the keywords.")
+    elif requested in typelist:
+        req_items = get_items(requested, tamriel_data)
+        print("You have asked for all the entries that are listed as", requested, ".")
+        print(req_items)
     else:
-        print("haven't built the rest yet")
+        print("Not a valid request.")
+        print(f"You can request information on {typelist}")
+        print("just type -r followed by one of the keywords.")
 
-    # print(f'You can request = "{requested}"')
-    # print(f'int_arg = "{race_arg}"')
 
+
+def get_types(tamriel_panda):
+    "This is grabbing the types of data available"
+    datatypes = []
+
+    headers = list(tamriel_panda.columns.values)
+
+    firstheader = headers[0]
+
+    datatypes = list(tamriel_panda[firstheader].unique())
+
+    return datatypes
+
+
+def get_items(searchterm, tamriel_panda):
+    "This searches for all entries that are classified based on the search term."
+    print("getting requested data")
+    print(tamriel_panda)
+
+    items = ""
+
+    headers = list(tamriel_panda.columns.values)
+
+    firstheader = headers[0]
+
+    items = tamriel_panda.loc[tamriel_panda[firstheader] == searchterm]
+
+    return items
 
 # --------------------------------------------------
 if __name__ == '__main__':
