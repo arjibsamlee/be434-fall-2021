@@ -1,0 +1,45 @@
+type,subtype,name,description,altIdent,tag
+being,aedra,Akatosh,Add description,Dragon God of Time,
+being,daedra,Molag Bal,Add description,,daedric_prince
+being,daedra,Flame atronoch,Add description,,
+being,other,Dragon,Add description,Dovah,
+being,other,Senche,Add description,,
+being,other,Vampire,Add description,,
+being,other,Werewolf,Add description,,
+being,other,Lamia,Add description,,
+being,other,Minotaur,Add description,,
+being,other,Sload,Add description,,
+being,other,Lilmothiit,Add description,,
+being,other,Harpy,Add description,,
+being,other,Giant,Add description,,
+being,other,Druegh,Add description,,
+being,other,Centaur,Add description,,
+being,other,Goblin,Add description,,
+game,,Elder Scrolls Arena,Add description,,
+game,,Elder Scrolls: Daggerfall,Add description,,
+game,,Elder scrolls III: Morriwind,Add description,Moriwind,
+game,,Elder Scrolls IV: Oblivion,Add description,Oblivion,
+game,,Elder Scrolls V: Skyrim,Add description,Skyrim,
+game,,Elder Scrolls Online,Add description,ESO,
+location,city,Winterhold,Add description,,skyrim
+location,continent,Tamriel,Add description,,
+location,province,Skyrim,Add description,,
+location,plane,Coldharbor,Add description,,
+location,plane,Nirn,Add description,,
+location,realm,Mundus,Add description,,
+race,elf,Altmer,Add description,High Elf,playable
+race,elf,Dunmer,Add description,Dark Elf,playable
+race,elf,Bosmer,Add description,Wood Elf,playable
+race,elf,Orsmer,Add description,Orc,playable
+race,elf,Falmer,Add description,Snow Elf,
+race,elf,Maormer,Add description,Sea Elf,
+race,elf,Alyeid,Add description,Wild Elf,
+race,elf,Dwemer,Add description,Deep Elf,
+race,elf,Chimer,Add description,Changed Folk,
+race,man,Nord,Add description,,playable
+race,man,Imperial,Add description,,playable
+race,man,Redguard,Add description,,playable
+race,man,Breton,Add description,,playable
+race,other,Khajit,Add description,,playable
+race,other,Argonian,Add description,,playable
+location,province,Vardenfell,Add description,,morriwind
