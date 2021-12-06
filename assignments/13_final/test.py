@@ -7,6 +7,9 @@ import string
 from typing import List
 from subprocess import getstatusoutput
 
+# pylint: disable=W0105,missing-function-docstring,unspecified-encoding,consider-using-with
+# flake8: noqa
+
 PRG = './tac.py'
 EMPTY = 'inputs/empty.txt'
 ONE = 'inputs/one.txt'
