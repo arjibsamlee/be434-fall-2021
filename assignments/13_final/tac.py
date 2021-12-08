@@ -7,11 +7,10 @@ Purpose: Reverse of concatenating a file
 
 
 import argparse
-import os
 import sys
-import re
 
-# pylint: disable=W0105,missing-function-docstring,unspecified-encoding,consider-using-with
+
+# pylint: disable=W0105,no-else-break,missing-function-docstring,unspecified-encoding,consider-using-with
 # flake8: noqa
 
 
@@ -33,10 +32,11 @@ def get_args():
 
     parser.add_argument('-o',
                         '--outfile',
-                        help='Output',
+                        help='Outfile',
                         metavar='FILE',
-                        type=str,
+                        type=argparse.FileType('wt'),
                         default=sys.stdout)
+
     return parser.parse_args()
 
 
@@ -58,24 +58,32 @@ def main():
 
         # or each file get each line
         for line in lines:
+            # print('create cat')
             cat.append(line)
 
-    for o in reversed(cat):
-        tac.append(o, sep='')
+        for o in reversed(cat):
+            # print('reverseing cat')
+            tac.append(o)
+
+        cat = []
 
     if outfile != sys.stdout:
-        if os.path.isfile(outfile):
-            #print('is file'):
-            f = open(outfile,"w")
-        else:
-            f = open(outfile,'x')
+        # f = open(outfile,"w")
 
-        print("Output is in file:", outfile)
+        # print('Output is in file:', outfile)
         for element in tac:
-            element += "\n"
-            f.write(element)
+            # print('in for statement')
+            if element == '':
+                # print('empty')
+                break
+            else:
+                # print('not empty')
+                # element += "\n"
+                outfile.write(element)
+                # f.write(element)
 
-        f.close()
+        # print('Output is in file: ', outfile.name, sep='')
+        # f.close()
 
     else:
         print(*tac, sep="")
